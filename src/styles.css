@@ -13,6 +13,7 @@
     --Spacing: 18px;
     --TitlePadding: 18px;
     --TextPadding: 3px 6px 3px 6px;
+    --ButtonPadding: 9px 15px 9px 15px;
 
     --NavSize: 170px;
 
@@ -87,7 +88,8 @@ button {
 
     gap: var(--Spacing);
     color: white;
-    font-size: 1.4em;
+    font-size: x-large;
+    font-family: var(--TitleFont);
 
     text-align: left;
 
@@ -96,20 +98,39 @@ button {
 
     > :first-child {
         min-width: calc(var(--NavSize) - var(--TitlePadding)*2);
-    }
-
-    > * {
         padding: var(--TextPadding);
     }
 
     > #paths {
         background-color: rgba(255, 255, 255, 0.225);
-        display: flex;
+        border-radius: var(--BorderRad);
+        padding: 3px;
+        display: none; /* flex */
 
         > button {
-            font-family: Carlito;
+            font-size: 0.8em;
+            padding: var(--TextPadding);
+            font-family: var(--TitleFont);
+        }
+        > button:not(:last-child):hover {
+            background-color: var(--MainColorTransp);
+        }
+        > button:last-child {
+            cursor: default;
         }
 
+    }
+
+    > div.flexEnd {
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        > #sessionStatus {
+            font-family: var(--TitleFont);
+            font-size: 0.7em;
+            padding: var(--TextPadding);
+            align-self: flex-end;
+        }
     }
 }
 
@@ -118,6 +139,49 @@ nav {
     background-color: var(--MainAccent);
     width: var(--NavSize);
     height: 100%;
+    display: flex;
+
+    #nav-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+        padding: 6px;
+
+        #nav-list {
+            display: flex;
+            flex-direction: column;
+            
+            > button {
+                font-size: 1.1em;
+                font-family: var(--BodyFont);
+                font-weight: 600;
+                color: var(--MainColor);
+                background-color: var(--MainColorTransp);
+                padding: var(--ButtonPadding);
+                margin-bottom: 6px;
+            }
+        }
+
+        #nav-user {
+            background-color: var(--MainColor);
+            border-radius: var(--BorderRad);
+            color: white;
+            text-align: left;
+            text-overflow: ellipsis;
+
+            display: flex;
+            justify-content: space-between;
+            padding: 6px;
+            gap: 6px;
+
+            > button {
+                font-family: var(--BodyFont);
+                font-weight: 600;
+                padding: 6px;
+            }
+        }
+    }
 }
 
 #content-div {
@@ -127,6 +191,20 @@ nav {
     overflow-x: hidden;
 
     > div#content-page {
-        height: 110%;
+        padding: 6px;
     }
+}
+
+/* Content */
+
+h1 {
+    color: var(--MainColor);
+    margin: 12px;
+}
+
+.ActionButton {
+    background-color: var(--MainColor);
+    color: white;
+    font-family: Play;
+    padding: var(--ButtonPadding);
 }
