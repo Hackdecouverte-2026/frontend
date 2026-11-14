@@ -8,10 +8,16 @@
 </head>
 <body>
     <h1>Login</h1>
-    <form action="">
-        <div>Username: <input type="text"></div>
-        <div>Password: <input type="password"></div>
+    <form action="" id="loginForm">
+        <div>Username: <input type="text" id="login-username"></div>
+        <div>Password: <input type="password" id="login-password"></div>
     </form>
-    <button class="ActionButton">Sign-in</button>
+    <button class="ActionButton" id="signInBtn">Sign-in</button>
 </body>
+<script>
+    const Form = document.getElementById("loginForm")
+    document.getElementById("signInBtn").addEventListener("click",()=>{
+        window.parent.postMessage(JSON.stringify({username:document.getElementById("login-username").value,password: document.getElementById("login-password").value}))
+    })
+</script>
 </html>

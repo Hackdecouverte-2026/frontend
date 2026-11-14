@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/styles.css">
-    <title>Document</title>
+    <title>Logs</title>
 </head>
 <body>
-    <h1>Header</h1>
+    <h1>Logs</h1>
+    <div id="LogContent"></div>
+
+    <script src="/src/js/payload-table.js"></script>
+    <script>
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://localhost:8000/dev/logs?limit=50', true);
+
+        xhr.setRequestHeader('X-Dev-Key', 'passwordpassword');
+        xhr.setRequestHeader('Accept', 'application/json');
+
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                renderTable(xhr.responseText, '#LogContent');
+            } else {
+                console.error('Request failed:', xhr.status);
+                document.getElementById('LogContent').textContent = 'Request failed: ' + xhr.status;
+            }
+        };
+
+        xhr.onerror = function () {
+            console.error('Network error (server down or CORS blocked)');
+            document.getElementById('LogContent').textContent = 'Network error';
+        };
+
+        xhr.send();
+    </script>
 </body>
 </html>
