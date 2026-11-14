@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Comfortaa:wght@300..700&family=Fredoka:wght@300..700&family=Play:wght@400;700&family=Press+Start+2P&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Silkscreen:wght@400;700&display=swap');
+
+/* Fonts: Audiowide, Quantico, Comfortaa, Fredoka, Play, Silkscreen */
+
+:root {
+    --MainColor: rgb(191, 57, 0);
+    --MainColorTransp: rgba(191, 57, 0, 0.375);
+    --MainAccent: rgb(255, 212, 194);
+
+    --BackgroundColor: white;
+    --BoxShadow: 0 0 3px rgba(0, 0, 0, 0.551);
+    
+    --Spacing: 18px;
+    --TitlePadding: 18px;
+    --TextPadding: 3px 6px 3px 6px;
+
+    --NavSize: 170px;
+
+    --BorderRad: 5px;
+
+    --BodyFont: Play;
+    --TitleFont: Quantico;
+
+    --TransitionDelay: 0.2s;
+}
+
+::selection {
+    background-color: var(--MainColorTransp);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--MainAccent);
+    border-radius: var(--BorderRad);
+    border: 3px solid rgba(255, 255, 255, 0);
+    background-clip: padding-box;
+}::-webkit-scrollbar {
+    width: 12px;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--BodyFont);
+}
+
+button {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    border: none;
+    overflow: hidden;
+    background-color: transparent;
+    font-size: unset;
+    color: var(--MainTxtColor);
+    display: flex;
+    gap: var(--Spacing);
+    justify-content: space-between;
+    align-items: center;
+    padding: unset;
+    border-radius: var(--BorderRad);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    min-height: max-content;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    #inner {
+        flex-grow: 1;
+        display: flex;
+
+    }
+}
+
+#title {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.551);
+    min-height: 40px;
+    background-color: var(--MainColor);
+    user-select: none;
+
+    gap: var(--Spacing);
+    color: white;
+    font-size: 1.4em;
+
+    text-align: left;
+
+    box-shadow: var(--BoxShadow);
+    padding: 12px;
+
+    > :first-child {
+        min-width: calc(var(--NavSize) - var(--TitlePadding)*2);
+    }
+
+    > * {
+        padding: var(--TextPadding);
+    }
+
+    > #paths {
+        background-color: rgba(255, 255, 255, 0.225);
+        display: flex;
+
+        > button {
+            font-family: Carlito;
+        }
+
+    }
+}
+
+nav {
+    box-shadow: var(--BoxShadow);
+    background-color: var(--MainAccent);
+    width: var(--NavSize);
+    height: 100%;
+}
+
+#content-div {
+    background-color: var(--BackgroundColor);
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    > div#content-page {
+        height: 110%;
+    }
+}
